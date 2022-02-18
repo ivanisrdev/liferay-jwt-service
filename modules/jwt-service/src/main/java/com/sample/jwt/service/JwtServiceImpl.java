@@ -34,7 +34,7 @@ public class JwtServiceImpl implements JwtService {
     private static final Log _log = LogFactoryUtil.getLog(JwtServiceImpl.class);
 
     @Reference(policy = ReferencePolicy.DYNAMIC, policyOption = ReferencePolicyOption.GREEDY)
-    private OpenIdConnectSessionProvider _openIdConnectSessionProvider;
+    private volatile OpenIdConnectSessionProvider _openIdConnectSessionProvider;
 
     @Override
     public ClaimsToken getAccessToken(PortletRequest portletRequest, PortletResponse portletResponse) throws JsonProcessingException {
