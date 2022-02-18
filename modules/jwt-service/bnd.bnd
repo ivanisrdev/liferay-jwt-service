@@ -1,0 +1,12 @@
+Bundle-Name: JWT Service
+Bundle-SymbolicName: com.sample.jwt.service
+Bundle-Version: 1.0.0
+Export-Package: \
+    com.sample.jwt.service,\
+    com.sample.jwt.service.dto,\
+    com.sample.jwt.service.constants,\
+    com.sample.jwt.service.config
+Import-Package: *;resolution:=optional
+Include-Resource: \
+        @commons-codec-1.15.jar,\
+        @java-jwt-3.12.1.jar

@@ -1,0 +1,34 @@
+allprojects {
+
+    apply plugin: "java"
+
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+
+}
+
+subprojects {
+    configurations {
+        liferayCssBuilder
+        liferayReleaseApi
+        projectLombok
+        javaJwt
+        commonsCodec
+    }
+
+    dependencies {
+        liferayCssBuilder "com.liferay:com.liferay.css.builder:$liferayCssBuilderVersion"
+        liferayReleaseApi "com.liferay.portal:release.dxp.api:$liferayReleaseApiVersion"
+        projectLombok "org.projectlombok:lombok:$projectLombokVersion"
+        javaJwt "com.auth0:java-jwt:$javaJwtVersion"
+        commonsCodec "commons-codec:commons-codec:$commonsCodecVersion"
+    }
+
+    repositories {
+
+        maven {
+            url "https://repository.liferay.com/nexus/content/groups/public"
+        }
+    }
+
+}
