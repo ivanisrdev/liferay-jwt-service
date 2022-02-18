@@ -1,0 +1,4 @@
+configurations {
+	compileOnly.extendsFrom(liferayReleaseApi, projectLombok, javaJwt, commonsCodec)
+	annotationProcessor.extendsFrom(projectLombok)
+}
