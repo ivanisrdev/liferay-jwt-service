@@ -39,6 +39,8 @@ public class JwtServiceImpl implements JwtService {
     @Override
     public ClaimsToken getAccessToken(PortletRequest portletRequest, PortletResponse portletResponse) throws JsonProcessingException {
 
+        _log.info("Inside getAccessToken");
+
         OpenIdConnectSession openIdConnectSession = getOpenIdConnectSession(portletRequest);
         if (openIdConnectSession == null) {
             _log.error("openIdConnectSession null");
@@ -47,12 +49,16 @@ public class JwtServiceImpl implements JwtService {
 
         String jwtToken = decodePayloadJwt(openIdConnectSession.getAccessTokenValue());
         ClaimsToken accessToken = (ClaimsToken) deserializeJsonToDto(jwtToken, ClaimsToken.class);
+        _log.info("accessToken: " + accessToken.getEmailAddress());
 
         return accessToken;
     }
 
     @Override
     public ClaimsToken getRefreshToken(PortletRequest portletRequest, PortletResponse portletResponse) throws JsonProcessingException {
+
+        _log.info("Inside getRefreshToken");
+
         OpenIdConnectSession openIdConnectSession = getOpenIdConnectSession(portletRequest);
         if (openIdConnectSession == null) {
             _log.error("openIdConnectSession null");
@@ -61,6 +67,7 @@ public class JwtServiceImpl implements JwtService {
 
         String jwtToken = decodePayloadJwt(openIdConnectSession.getRefreshTokenValue());
         ClaimsToken refreshToken = (ClaimsToken) deserializeJsonToDto(jwtToken, ClaimsToken.class);
+        _log.info("refreshToken: " + refreshToken.getExpirationTime());
 
         return refreshToken;
     }

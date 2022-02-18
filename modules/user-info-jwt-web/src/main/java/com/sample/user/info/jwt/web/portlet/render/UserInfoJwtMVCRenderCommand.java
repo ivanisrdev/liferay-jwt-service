@@ -38,8 +38,11 @@ public class UserInfoJwtMVCRenderCommand implements MVCRenderCommand {
         try {
             ClaimsToken accessToken = _jwtService.getAccessToken(renderRequest, renderResponse);
             ClaimsToken refreshToken = _jwtService.getRefreshToken(renderRequest, renderResponse);
-            renderRequest.setAttribute("accessTokenEmail" , accessToken.getEmailAddress());
-            renderRequest.setAttribute("refreshTokenExp" , refreshToken.getEmailAddress());
+            if (accessToken != null || refreshToken != null) {
+                renderRequest.setAttribute("accessTokenEmail" , accessToken.getEmailAddress());
+                renderRequest.setAttribute("refreshTokenExp" , refreshToken.getExpirationTime());
+            }
+
         } catch (Exception exception) {
             _log.error(exception.getMessage(), exception);
         }

@@ -1,5 +1,10 @@
 <%@ include file="/init.jsp" %>
 
-accessTokenEmail: ${accessTokenEmail}
+<p>
+    accessTokenEmail: ${accessTokenEmail}
+</p>
 
-refreshTokenExp: ${refreshTokenExp}
+<p>
+    refreshTokenExp: ${refreshTokenExp}
+</p>
+
