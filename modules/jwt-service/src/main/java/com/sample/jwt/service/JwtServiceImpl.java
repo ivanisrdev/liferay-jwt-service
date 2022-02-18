@@ -49,6 +49,7 @@ public class JwtServiceImpl implements JwtService {
 
         String jwtToken = decodePayloadJwt(openIdConnectSession.getAccessTokenValue());
         ClaimsToken accessToken = (ClaimsToken) deserializeJsonToDto(jwtToken, ClaimsToken.class);
+      
         _log.info("accessToken: " + accessToken.getEmailAddress());
 
         return accessToken;
@@ -67,6 +68,7 @@ public class JwtServiceImpl implements JwtService {
 
         String jwtToken = decodePayloadJwt(openIdConnectSession.getRefreshTokenValue());
         ClaimsToken refreshToken = (ClaimsToken) deserializeJsonToDto(jwtToken, ClaimsToken.class);
+
         _log.info("refreshToken: " + refreshToken.getExpirationTime());
 
         return refreshToken;
